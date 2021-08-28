@@ -1,15 +1,16 @@
 package src;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.UUID;
 
-public class DataPacket {
+public class DataPacket implements Serializable {
     private String objectID;
     private Timestamp timeStamp;
 
-    public DataPacket(Timestamp timeStamp) {
+    public DataPacket(String objectID, Timestamp timeStamp) {
         this.timeStamp = timeStamp;
-        this.objectID = UUID.randomUUID().toString();
+        this.objectID = objectID;
     }
 
     public String getObjectID() {

@@ -7,6 +7,7 @@ import src.constants.MQConstants;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
 public class Main {
@@ -14,7 +15,7 @@ public class Main {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(MQConstants.QUEUE_HOST);
         // randomly generate packet
-        DataPacket packet = new DataPacket(new Timestamp(System.currentTimeMillis()));
+        DataPacket packet = new DataPacket(UUID.randomUUID().toString(), new Timestamp(System.currentTimeMillis()));
 
         Connection connection = null;
         try {
