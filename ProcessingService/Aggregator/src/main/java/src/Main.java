@@ -3,7 +3,9 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import src.Utils.ConverterUtils;
 import src.constants.MQConstants;
+import src.data.DataPacket;
 
 public class Main {
 
@@ -16,8 +18,7 @@ public class Main {
         channel.queueDeclare(MQConstants.QUEUE_NAME_FOR_AGGREGATOR, false, false, false, null);
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println(" [x] Received '" + message + "'");
+            DataPacket message = ConverterUtils.bytesToDatabaseData(delivery.getBody());
         };
         channel.basicConsume(MQConstants.QUEUE_NAME_FOR_AGGREGATOR, true, deliverCallback, consumerTag -> { });
     }

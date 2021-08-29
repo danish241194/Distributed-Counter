@@ -1,8 +1,7 @@
-package src;
+package src.data;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.UUID;
 
 public class DataPacket implements Serializable {
     private String objectID;

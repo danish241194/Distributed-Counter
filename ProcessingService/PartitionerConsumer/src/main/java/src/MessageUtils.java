@@ -1,9 +1,11 @@
 package src;
 
+import src.data.DataPacket;
+
 import java.io.*;
 
 public class MessageUtils {
-    public static byte[] serializeObject(Object object) throws IOException {
+        public static byte[] serializeObject(DataPacket object) throws IOException {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream out = new ObjectOutputStream(bos)) {
             out.writeObject(object);

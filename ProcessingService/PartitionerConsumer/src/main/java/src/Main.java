@@ -4,6 +4,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import src.constants.MQConstants;
+import src.data.DataPacket;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -22,13 +23,18 @@ public class Main {
             connection = factory.newConnection();
             Channel channel = connection.createChannel() ;
             channel.queueDeclare(MQConstants.QUEUE_NAME_FOR_AGGREGATOR, false, false, false, null);
-            String message = "Hello World!";
             channel.basicPublish("", MQConstants.QUEUE_NAME_FOR_AGGREGATOR, null, MessageUtils.serializeObject(packet));
-            System.out.println(" [x] Sent '" + message + "'");
+//            connection.close();
+            System.out.println(" [x] Sent '");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
             e.printStackTrace();
         }
+
+
+//        CqlSession session = CqlSession.builder().build();
+//        Row rs = session.execute("SELECT * FROM videodb.videos;").one();
+//        System.out.println(rs.getString("description"));
     }
 }
