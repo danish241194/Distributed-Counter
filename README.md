@@ -22,5 +22,5 @@ docker run -e DS_LICENSE=accept -p 9042:9042 --memory 4g --name my-dse -d datast
 docker pull datastax/dse-studio:latest
 docker run -e DS_LICENSE=accept --memory 4g --name my-dse -d datastax/dse-server -g -s -k
 ```
-[Complete Guide to Setup Cassandra (datastax) on local machine](https://medium.com/@michaeljpr/five-minute-guide-getting-started-with-cassandra-on-docker-4ef69c710d84)
+[Complete Guide to Setup Cassandra (datastax) on local machine](https://medium.com/@michaeljpr/five-minute-guide-getting-started-with-cassandra-on-docker-4ef69c710d84)   
 
